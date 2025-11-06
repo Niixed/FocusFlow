@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #dfe9ea;
+  align-items: center;
+  justify-content: center;
+}
+
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  background-color: #00264D;
+  opacity: none;
+  color: rgb(234, 234, 234);
+}
+
+main {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.duration-selection, .controls, .category-selection {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+button {
+  background: #3ba3ee;
+  opacity: 0.8;
+  color: white;
+  border:#000;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #00264D;
+}
+
+.cup {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  overflow: hidden;
+  background: #eaeaea;
+  margin: 1rem 0;
+}
+
+#timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.4rem;
+  z-index: 3;
+}
+
+/* --- SVG waves --- */
+.wave-svg {
+  position: absolute;
+  color: #2a82c5;
+  background-color: #2a82c5;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 250%;
+  transform: translateY(var(--fill-level, 0%));
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.wave-back {
+  fill: url(#waterGradient);
+  opacity: 0.6;
+  animation: waveBackAnim 6s ease-in-out infinite alternate;
+}
+
+.wave-front {
+  fill: url(#waterGradient);
+  opacity: 0.7;
+  animation: waveFrontAnim 4s ease-in-out infinite alternate;
+
+}
+
+/* waves move left and right smoothly */
+@keyframes waveBackAnim {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+@keyframes waveFrontAnim {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(25%); }
+}
+
+/* bubbles rising */
+.bubble {
+  position: absolute;
+  bottom: 0; /* start at bottom of the cup */
+  width: 12px;
+  height: 12px;
+  background: rgba(105, 187, 227, 0.8);
+  border-radius: 50%;
+  animation: bubbleRise 5s infinite ease-in-out;
+  z-index: 2; /* above the cup background but below timer */
+}
+
+/* Bubble positions and delays */
+.bubble-1 { left: 10%; animation-delay: 0s; }
+.bubble-2 { left: 30%; animation-delay: 1s; }
+.bubble-3 { left: 50%; animation-delay: 2s; }
+.bubble-4 { left: 70%; animation-delay: 0.5s; }
+.bubble-5 { left: 85%; animation-delay: 1.5s; }
+.bubble-6 { left: 40%; animation-delay: 2.5s; }
+
+/* Bubble rise animation */
+@keyframes bubbleRise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-180px) scale(0.5); opacity: 0; }
+}
+
+.history-item {
+  background: #f0f8ff;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}

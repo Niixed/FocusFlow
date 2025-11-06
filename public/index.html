@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusFlow - Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>FocusFlow</h1>
+  </header>
+
+  <main>
+    <section class="duration-selection">
+      <p>Select duration:</p>
+      <button class="preset-btn" data-minutes="15">15 min</button>
+      <button class="preset-btn" data-minutes="45">45 min</button>
+      <button class="preset-btn" data-minutes="60">60 min</button>
+    </section>
+
+    <section class="timer-display">
+      <div class="cup">
+        <!-- SVG Waves -->
+        <svg class="wave-svg" viewBox="0 0 600 200" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waterGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#00264D"/>
+              <stop offset="100%" stop-color="#0052A2"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Back wave -->
+          <path class="wave-back" d="
+            M0,100 
+            Q75,80 150,100 
+            T300,100 
+            T450,100 
+            T600,100 
+            V200 H0 Z
+          "/>
+
+          <!-- Front wave -->
+          <path class="wave-front" d="
+            M-1000,110 
+            Q75,130 150,110 
+            T300,110 
+            T450,210 
+            T600,210 
+            V200 H0 Z
+          "/>
+        </svg>
+
+        <div id="timer">00:00</div>
+
+        <!-- bubbles -->
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="start-btn">Start</button>
+      <button id="pause-btn">Pause</button>
+      <button id="reset-btn">Reset</button>
+      <button id="complete-btn">Complete</button>
+    </section>
+
+    <section class="category-selection">
+      <label for="category">Category:</label>
+      <select id="category">
+        <option value="work">Work</option>
+        <option value="study">Study</option>
+        <option value="creative">Creative</option>
+      </select>
+    </section>
+    
+    <a href="history.html"><button>View History</button></a>
+
+  </main>
+
+  <footer>
+    <p>Stay focused! 💪</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

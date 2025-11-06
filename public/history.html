@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow - History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Session History</h1>
+    <section id="history-list">
+      <!-- Sessions will be injected here -->
+    </section>
+    <button onclick="clearHistory()">Clear History</button>
+    <a href="index.html"><button>Back to Timer</button></a>
+  </main>
+
+  <script>
+    async function loadHistory() {
+      try {
+        const res = await fetch('/api/sessions');
+        const sessions = await res.json();
+
+        const container = document.getElementById('history-list');
+        container.innerHTML = '';
+
+        if (sessions.length === 0) {
+          container.innerHTML = '<p>No sessions yet.</p>';
+          return;
+        }
+
+        sessions.reverse().forEach(session => {
+          const div = document.createElement('div');
+          div.className = 'history-item';
+          div.innerHTML = `
+            <strong>Task:</strong> ${session.task} <br>
+            <strong>Duration:</strong> ${session.duration} min <br>
+            <strong>Date:</strong> ${new Date(session.date).toLocaleString()}
+            <hr>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        console.error('Failed to load sessions', err);
+      }
+    }
+
+    async function clearHistory() {
+      if (!confirm("Are you sure you want to delete all sessions?")) return;
+      try {
+        await fetch('/api/sessions', { method: 'DELETE' });
+        loadHistory();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadHistory();
+  </script>
+</body>
+</html>
