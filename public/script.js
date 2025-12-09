@@ -85,11 +85,11 @@ function flashEndAnimation() {
   );
 }
 
-// Select your Complete button
+
 const completeBtn = document.getElementById("complete-btn");
 
 completeBtn.addEventListener("click", async () => {
-  // Grab task and duration from your page inputs or variables
+  
   const task = document.getElementById("task-input").value.trim();
   const duration = parseInt(document.getElementById("duration-input").value);
 
