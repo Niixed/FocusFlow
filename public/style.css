@@ -77,7 +77,7 @@ button:hover {
   z-index: 3;
 }
 
-/* --- SVG waves --- */
+
 .wave-svg {
   position: absolute;
   color: #2a82c5;
@@ -115,19 +115,19 @@ button:hover {
   100% { transform: translateX(25%); }
 }
 
-/* bubbles rising */
+
 .bubble {
   position: absolute;
-  bottom: 0; /* start at bottom of the cup */
+  bottom: 0;
   width: 12px;
   height: 12px;
   background: rgba(105, 187, 227, 0.8);
   border-radius: 50%;
   animation: bubbleRise 5s infinite ease-in-out;
-  z-index: 2; /* above the cup background but below timer */
+  z-index: 2; 
 }
 
-/* Bubble positions and delays */
+
 .bubble-1 { left: 10%; animation-delay: 0s; }
 .bubble-2 { left: 30%; animation-delay: 1s; }
 .bubble-3 { left: 50%; animation-delay: 2s; }
@@ -135,7 +135,7 @@ button:hover {
 .bubble-5 { left: 85%; animation-delay: 1.5s; }
 .bubble-6 { left: 40%; animation-delay: 2.5s; }
 
-/* Bubble rise animation */
+
 @keyframes bubbleRise {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-180px) scale(0.5); opacity: 0; }
