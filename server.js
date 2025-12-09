@@ -11,14 +11,14 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const SESSION_PATH = path.join(DATA_DIR, "sessions.json");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 
-// Middleware
+
 app.use(express.json());
 app.use(express.static(PUBLIC_DIR));
 
-// Ensure data directory exists
+
 if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR);
 
-// Helper: Read sessions
+
 async function readSessions() {
   try {
     const data = await fs.readFile(SESSION_PATH, "utf8");
@@ -28,12 +28,12 @@ async function readSessions() {
   }
 }
 
-// Helper: Write sessions
+
 async function writeSessions(sessions) {
   await fs.writeFile(SESSION_PATH, JSON.stringify(sessions, null, 2));
 }
 
-// GET all sessions
+
 app.get("/api/sessions", async (req, res) => {
   try {
     const sessions = await readSessions();
@@ -44,7 +44,7 @@ app.get("/api/sessions", async (req, res) => {
   }
 });
 
-// POST a new session
+
 app.post("/api/sessions", async (req, res) => {
   const { task, duration } = req.body;
 
@@ -65,7 +65,7 @@ app.post("/api/sessions", async (req, res) => {
   }
 });
 
-// DELETE a session by ID
+
 app.delete("/api/sessions/:id", async (req, res) => {
   const { id } = req.params;
   try {
